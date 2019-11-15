@@ -8,6 +8,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@mdi/js": "^4.5.95",
+    "@mdi/react": "^1.2.1",
     "expo": "^35.0.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",

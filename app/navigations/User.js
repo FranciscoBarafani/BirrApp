@@ -17,7 +17,7 @@ const HomeScreenStack = createStackNavigator({
     navigationOptions: ({ navigation }) => ({
       title: "Home",
       headerStyle: {
-        backgroundColor: "#FFD400"
+        backgroundColor: "#ffdd33"
       },
       headerTitleStyle: {
         fontWeight: "bold",
@@ -32,7 +32,7 @@ const NewPostScreenStack = createStackNavigator({
     navigationOptions: ({ navigation }) => ({
       title: "Nuevo Post",
       headerStyle: {
-        backgroundColor: "#FFD400"
+        backgroundColor: "#ffdd33"
       },
       headerTitleStyle: {
         fontWeight: "bold",
@@ -47,7 +47,7 @@ const AccountScreenStack = createStackNavigator({
     navigationOptions: ({ navigation }) => ({
       title: "Mi Cuenta",
       headerStyle: {
-        backgroundColor: "#FFD400"
+        backgroundColor: "#ffdd33"
       },
       headerTitleStyle: {
         fontWeight: "bold",
@@ -66,9 +66,9 @@ const RootStack = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="account"
+            name="home-outline"
             type="material-community"
-            size={40}
+            size={30}
             color={tintColor}
           />
         )
@@ -79,9 +79,9 @@ const RootStack = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="account-multiple-outline"
+            name="plus-box-outline"
             type="material-community"
-            size={40}
+            size={30}
             color={tintColor}
           />
         )
@@ -92,9 +92,9 @@ const RootStack = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="account"
+            name="account-outline"
             type="material-community"
-            size={40}
+            size={30}
             color={tintColor}
           />
         )
@@ -104,6 +104,7 @@ const RootStack = createBottomTabNavigator(
   {
     initialRouteName: "Home",
     tabBarOptions: {
+      showLabel: false,
       inactiveTintColor: "#646464",
       activeTintColor: "#FFD400"
     }
