@@ -1,13 +1,20 @@
+//React Native Components
 import React, { Component } from "react";
 import { View, StyleSheet, ScrollView, Image } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon, Button } from "react-native-elements";
+//Tcomb Form Native
 import t from "tcomb-form-native";
 const Form = t.form.Form;
 import { AddBeerStruct, AddBeerOptions } from "../../forms/AddBeer";
+//Avoid keyboard over input
 import { KeyboardAvoidingView } from "react-native";
+//Image Picker and Permissions
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
+//Toast
 import Toast, { DURATION } from "react-native-easy-toast";
+//Rating
+import { Rating, AirbnbRating } from "react-native-ratings";
 
 export default class NewPostScreen extends Component {
   constructor() {
@@ -59,9 +66,16 @@ export default class NewPostScreen extends Component {
       }
     }
   };
+  //This function updates the component state on every form change
+  onChange = formValue => {
+    this.setState({
+      formData: formValue
+    });
+  };
 
   render() {
     const { imageUriBeer } = this.state;
+    const hopImage = require("../../../assets/LupuloImage.png");
     return (
       <ScrollView style={styles.view}>
         <KeyboardAvoidingView behavior="padding">
@@ -80,6 +94,30 @@ export default class NewPostScreen extends Component {
               ref="addBeerForm"
               type={AddBeerStruct}
               options={AddBeerOptions}
+              value={this.state.formData}
+              //On Change propperty returns a json with the formValue
+              onChange={formValue => this.onChange(formValue)}
+            />
+          </View>
+          <View style={styles.ratingViewStyle}>
+            <Rating
+              type="custom"
+              ratingImage={hopImage}
+              ratingColor="#FFD400"
+              selectedColor="#FFD400"
+              ratingBackgroundColor="#FFD400"
+              startingValue={0}
+              ratingCount={5}
+              imageSize={30}
+              onFinishRating={this.ratingCompleted}
+              style={{ paddingVertical: 10 }}
+            />
+          </View>
+          <View style={styles.buttonViewStyle}>
+            <Button
+              title="Agregar"
+              buttonStyle={styles.buttonStyle}
+              onPress={() => console.log("Presionado")}
             />
           </View>
           <Toast
@@ -103,8 +141,7 @@ const styles = StyleSheet.create({
   },
   viewPhoto: {
     height: 200,
-    marginBottom: 20,
-    paddingTop: 20
+    marginBottom: 20
   },
   addPhotoIcon: {
     backgroundColor: "#e3e3e3",
@@ -113,5 +150,18 @@ const styles = StyleSheet.create({
   },
   formStyle: {
     padding: 20
+  },
+  buttonViewStyle: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20
+  },
+  buttonStyle: {
+    backgroundColor: "#FFD400"
+  },
+  ratingViewStyle: {
+    height: 100,
+    paddingLeft: 20,
+    paddingRight: 20
   }
 });

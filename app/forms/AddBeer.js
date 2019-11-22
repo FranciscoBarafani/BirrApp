@@ -13,9 +13,7 @@ export const AddBeerOptions = {
     name: {
       template: inputTemplate,
       config: {
-        placeholder: "Nombre de la Cerveza",
-        iconType: "material-community",
-        iconName: "silverware"
+        placeholder: "Nombre de la Cerveza"
       }
     },
     description: {
@@ -27,7 +25,9 @@ export const AddBeerOptions = {
     bar: {
       template: inputTemplate,
       config: {
-        placeholder: "Bar donde se puede tomar"
+        placeholder: "Bar donde se puede tomar",
+        iconType: "material-community",
+        iconName: "store"
       }
     }
   }
